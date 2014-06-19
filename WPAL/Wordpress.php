@@ -16,15 +16,18 @@ class Wordpress
 	private $menu;
 	/** @var array */
 	private $submenu;
+	/** @var \WP_Roles */
+	private $roles;
 
 	public function __construct()
 	{
 		global $wpdb;
 		global $menu;
 		global $submenu;
-		$this->wpdb = $wpdb;
-		$this->menu = $menu;
-		$this->submenu = $submenu;
+
+		$this->wpdb = &$wpdb;
+		$this->menu = &$menu;
+		$this->submenu = &$submenu;
 	}
 
 	/** @return \wpdb WPDB instance. */
@@ -43,6 +46,23 @@ class Wordpress
 	public function getSubmenu()
 	{
 		return $this->submenu;
+	}
+
+	public function getRoles()
+	{
+		if($this->roles === null){
+			global $wp_roles;
+			if (class_exists('WP_Roles') && !($wp_roles instanceof \WP_Roles)) {
+				$wp_roles = new \WP_Roles();
+			}
+			$this->roles = &$wp_roles;
+		}
+		return $this->roles;
+	}
+
+	public function addRole($role, $display_name, $capabilities = array())
+	{
+		return add_role($role, $display_name, $capabilities);
 	}
 
 	public function addAction($tag, $function_to_add, $priority = 10, $accepted_args = 1)
@@ -133,5 +153,15 @@ class Wordpress
 	public function getStylesheetDirectoryUri()
 	{
 		return get_stylesheet_directory_uri();
+	}
+
+	public function registerPostType($post_type, $args = array())
+	{
+		return register_post_type($post_type, $args);
+	}
+
+	public function registerTaxonomy($taxonomy, $object_type, $args = array())
+	{
+		return register_taxonomy($taxonomy, $object_type, $args);
 	}
 }
