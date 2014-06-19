@@ -10,23 +10,39 @@ namespace WPAL;
  */
 class Wordpress
 {
-	/**
-	 * @var \wpdb
-	 */
+	/** @var \wpdb */
 	private $wpdb;
+	/** @var array */
+	private $menu;
+	/** @var array */
+	private $submenu;
 
 	public function __construct()
 	{
 		global $wpdb;
+		global $menu;
+		global $submenu;
 		$this->wpdb = $wpdb;
+		$this->menu = $menu;
+		$this->submenu = $submenu;
 	}
 
-	/**
-	 * @return \wpdb WPDB instance.
-	 */
+	/** @return \wpdb WPDB instance. */
 	public function getWPDB()
 	{
 		return $this->wpdb;
+	}
+
+	/** @return array Menu data. */
+	public function getMenu()
+	{
+		return $this->menu;
+	}
+
+	/** @return array Submenu data. */
+	public function getSubmenu()
+	{
+		return $this->submenu;
 	}
 
 	public function addAction($tag, $function_to_add, $priority = 10, $accepted_args = 1)
@@ -37,6 +53,11 @@ class Wordpress
 	public function removeAction($tag, $function_to_remove, $priority = 10)
 	{
 		return remove_action($tag, $function_to_remove, $priority);
+	}
+
+	public function doAction($tag, $arg = '')
+	{
+		return do_action($tag, $arg);
 	}
 
 	public function addFilter($tag, $function_to_add, $priority = 10, $accepted_args = 1)
@@ -82,5 +103,35 @@ class Wordpress
 	public function getOption($option, $default = false)
 	{
 		return get_option($option, $default);
+	}
+
+	public function isAdmin()
+	{
+		return is_admin();
+	}
+
+	public function currentUserCan($capability)
+	{
+		return current_user_can($capability);
+	}
+
+	public function addMenuPage($page_title, $menu_title, $capability, $menu_slug, $function = '', $icon_url = '', $position = null)
+	{
+		return add_menu_page($page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position);
+	}
+
+	public function addSubmenuPage($parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function = '')
+	{
+		return add_submenu_page($parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function);
+	}
+
+	public function getStylesheetDirectory()
+	{
+		return get_stylesheet_directory();
+	}
+
+	public function getStylesheetDirectoryUri()
+	{
+		return get_stylesheet_directory_uri();
 	}
 }
