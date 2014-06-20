@@ -203,4 +203,39 @@ class Wordpress
 	{
 		wp_enqueue_style($handle, $src, $deps, $ver, $media);
 	}
+
+	public function addMetaBox($id, $title, $callback, $screen = null, $context = 'advanced', $priority = 'default', $callback_args = null)
+	{
+		add_meta_box($id, $title, $callback, $screen, $context, $priority, $callback_args);
+	}
+
+	public function wpCountPosts($type = 'post', $perm = '')
+	{
+		return wp_count_posts($type, $perm);
+	}
+
+	public function numberFormatI18n($number, $decimals = 0)
+	{
+		return number_format_i18n($number, $decimals);
+	}
+
+	public function fetchFeed($url)
+	{
+		return fetch_feed($url);
+	}
+
+	public function isWpError($thing)
+	{
+		return is_wp_error($thing);
+	}
+
+	public function wptexturize($text)
+	{
+		return wptexturize($text);
+	}
+
+	public function humanTimeDiff($from, $to = '')
+	{
+		return human_time_diff($from, $to);
+	}
 }
