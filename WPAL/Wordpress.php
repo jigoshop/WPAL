@@ -16,6 +16,8 @@ class Wordpress
 	private $menu;
 	/** @var array */
 	private $submenu;
+	/** @var mixed */
+	private $currentScreen;
 	/** @var \WP_Roles */
 	private $roles;
 
@@ -24,10 +26,12 @@ class Wordpress
 		global $wpdb;
 		global $menu;
 		global $submenu;
+		global $current_screen;
 
 		$this->wpdb = &$wpdb;
 		$this->menu = &$menu;
 		$this->submenu = &$submenu;
+		$this->currentScreen = &$current_screen;
 	}
 
 	/** @return \wpdb WPDB instance. */
@@ -58,6 +62,11 @@ class Wordpress
 			$this->roles = &$wp_roles;
 		}
 		return $this->roles;
+	}
+
+	public function getCurrentScreen()
+	{
+		return $this->currentScreen;
 	}
 
 	public function addRole($role, $display_name, $capabilities = array())
@@ -163,5 +172,35 @@ class Wordpress
 	public function registerTaxonomy($taxonomy, $object_type, $args = array())
 	{
 		return register_taxonomy($taxonomy, $object_type, $args);
+	}
+
+	public function isPostTypeArchive($post_types = '')
+	{
+		return is_post_type_archive($post_types);
+	}
+
+	public function isPage($page = '')
+	{
+		return is_page($page);
+	}
+
+	public function isTax($taxonomy = '', $term = '')
+	{
+		return is_tax($taxonomy, $term);
+	}
+
+	public function isSingular($post_types = '')
+	{
+		return is_singular($post_types);
+	}
+
+	public function wpEnqueueScript($handle, $src = false, $deps = array(), $ver = false, $in_footer = false)
+	{
+		wp_enqueue_script($handle, $src, $deps, $ver, $in_footer);
+	}
+
+	public function wpEnqueueStyle($handle, $src = false, $deps = array(), $ver = false, $media = false)
+	{
+		wp_enqueue_style($handle, $src, $deps, $ver, $media);
 	}
 }
