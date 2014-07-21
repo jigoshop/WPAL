@@ -20,18 +20,26 @@ class Wordpress
 	private $currentScreen;
 	/** @var \WP_Roles */
 	private $roles;
+	/** @var null|\WP_Post */
+	private $post;
+	/** @var \WP_Query */
+	private $query;
 
 	public function __construct()
 	{
 		global $wpdb;
+		global $wp_query;
 		global $menu;
 		global $submenu;
 		global $current_screen;
+		global $post;
 
 		$this->wpdb = &$wpdb;
 		$this->menu = &$menu;
 		$this->submenu = &$submenu;
 		$this->currentScreen = &$current_screen;
+		$this->post = &$post;
+		$this->query = &$wp_query;
 	}
 
 	/** @return \wpdb WPDB instance. */
@@ -52,6 +60,22 @@ class Wordpress
 		return $this->submenu;
 	}
 
+	/** @return null|\WP_Post Post object. */
+	public function getGlobalPost()
+	{
+		return $this->post;
+	}
+
+	public function getQueryParameter($parameter, $default = null)
+	{
+		if(!isset($this->query->query[$parameter])){
+			return $default;
+		}
+
+		return $this->query->query[$parameter];
+	}
+
+	/** @return \WP_Roles Roles object. */
 	public function getRoles()
 	{
 		if($this->roles === null){
@@ -64,9 +88,28 @@ class Wordpress
 		return $this->roles;
 	}
 
+	/**
+	 * @return string Current displayed type.
+	 */
+	public function getTypeNow()
+	{
+		global $typenow;
+		return $typenow;
+	}
+
 	public function getCurrentScreen()
 	{
 		return $this->currentScreen;
+	}
+
+	public function getPost($post = null, $output = OBJECT, $filter = 'raw')
+	{
+		return get_post($post, $output, $filter);
+	}
+
+	public function getPostMeta($post_id, $key = '', $single = false)
+	{
+		return get_post_meta($post_id, $key, $single);
 	}
 
 	public function addRole($role, $display_name, $capabilities = array())
@@ -206,7 +249,7 @@ class Wordpress
 
 	public function addMetaBox($id, $title, $callback, $screen = null, $context = 'advanced', $priority = 'default', $callback_args = null)
 	{
-		add_meta_box($id, $title, $callback, $screen, $context, $priority, $callback_args);
+		\add_meta_box($id, $title, $callback, $screen, $context, $priority, $callback_args);
 	}
 
 	public function wpCountPosts($type = 'post', $perm = '')
@@ -237,5 +280,20 @@ class Wordpress
 	public function humanTimeDiff($from, $to = '')
 	{
 		return human_time_diff($from, $to);
+	}
+
+	public function getTerms($taxonomies, $args = '')
+	{
+		return get_terms($taxonomies, $args);
+	}
+
+	public function wpUpdatePost($array = array(), $error = false)
+	{
+		return wp_update_post($array, $error);
+	}
+
+	public function updatePostMeta($id, $meta_key, $meta_value, $previous_value = '')
+	{
+		return update_post_meta($id, $meta_key, $meta_value, $previous_value);
 	}
 }
