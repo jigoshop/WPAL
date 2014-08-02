@@ -311,4 +311,9 @@ class Wordpress
 	{
 		return add_settings_field($id, $title, $callback, $page, $section, $args);
 	}
+
+	public function wpParseArgs($args, $defaults = '')
+	{
+		return wp_parse_args($args, $defaults);
+	}
 }
