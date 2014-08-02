@@ -296,4 +296,19 @@ class Wordpress
 	{
 		return update_post_meta($id, $meta_key, $meta_value, $previous_value);
 	}
+
+	public function registerSetting($option_group, $option_name, $sanitize_callback = '')
+	{
+		return register_setting($option_group, $option_name, $sanitize_callback);
+	}
+
+	public function addSettingsSection($id, $title, $callback, $page)
+	{
+		return add_settings_section($id, $title, $callback, $page);
+	}
+
+	public function addSettingsField($id, $title, $callback, $page, $section = 'default', $args = array())
+	{
+		return add_settings_field($id, $title, $callback, $page, $section, $args);
+	}
 }
