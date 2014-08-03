@@ -22,6 +22,8 @@ class Wordpress
 	private $roles;
 	/** @var null|\WP_Post */
 	private $post;
+	/** @var string */
+	private $pageNow;
 	/** @var \WP_Query */
 	private $query;
 
@@ -33,12 +35,14 @@ class Wordpress
 		global $submenu;
 		global $current_screen;
 		global $post;
+		global $pagenow;
 
 		$this->wpdb = &$wpdb;
 		$this->menu = &$menu;
 		$this->submenu = &$submenu;
 		$this->currentScreen = &$current_screen;
 		$this->post = &$post;
+		$this->pageNow = &$pagenow;
 		$this->query = &$wp_query;
 	}
 
@@ -64,6 +68,12 @@ class Wordpress
 	public function getGlobalPost()
 	{
 		return $this->post;
+	}
+
+	/** @return string Page now global value. */
+	public function getPageNow()
+	{
+		return $this->pageNow;
 	}
 
 	public function getQueryParameter($parameter, $default = null)
