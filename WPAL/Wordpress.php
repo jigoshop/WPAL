@@ -252,6 +252,11 @@ class Wordpress
 		wp_enqueue_script($handle, $src, $deps, $ver, $in_footer);
 	}
 
+	public function wpDeregisterScript($handle)
+	{
+		wp_deregister_script($handle);
+	}
+
 	public function wpEnqueueStyle($handle, $src = false, $deps = array(), $ver = false, $media = false)
 	{
 		wp_enqueue_style($handle, $src, $deps, $ver, $media);
@@ -314,12 +319,12 @@ class Wordpress
 
 	public function addSettingsSection($id, $title, $callback, $page)
 	{
-		return add_settings_section($id, $title, $callback, $page);
+		add_settings_section($id, $title, $callback, $page);
 	}
 
 	public function addSettingsField($id, $title, $callback, $page, $section = 'default', $args = array())
 	{
-		return add_settings_field($id, $title, $callback, $page, $section, $args);
+		 add_settings_field($id, $title, $callback, $page, $section, $args);
 	}
 
 	public function wpParseArgs($args, $defaults = '')
