@@ -264,7 +264,12 @@ class Wordpress
 
 	public function addMetaBox($id, $title, $callback, $screen = null, $context = 'advanced', $priority = 'default', $callback_args = null)
 	{
-		\add_meta_box($id, $title, $callback, $screen, $context, $priority, $callback_args);
+		add_meta_box($id, $title, $callback, $screen, $context, $priority, $callback_args);
+	}
+
+	public function removeMetaBox($id, $screen, $context)
+	{
+		remove_meta_box($id, $screen, $context);
 	}
 
 	public function wpCountPosts($type = 'post', $perm = '')
