@@ -347,4 +347,9 @@ class Wordpress
 	{
 		return wp_parse_args($args, $defaults);
 	}
+
+	public function sanitizeTitle($title, $fallback_title = '', $context = 'save')
+	{
+		return sanitize_title($title, $fallback_title, $context);
+	}
 }
