@@ -122,6 +122,11 @@ class Wordpress
 		return get_post_meta($post_id, $key, $single);
 	}
 
+	public function getPostField($field, $post, $context = 'display')
+	{
+		return get_post_field($field, $post, $context);
+	}
+
 	public function addRole($role, $display_name, $capabilities = array())
 	{
 		return add_role($role, $display_name, $capabilities);
