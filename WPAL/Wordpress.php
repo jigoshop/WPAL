@@ -52,6 +52,12 @@ class Wordpress
 		return $this->wpdb;
 	}
 
+	/** @return \WP_Query Current query object. */
+	public function getWpQuery()
+	{
+		return $this->query;
+	}
+
 	/** @return array Menu data. */
 	public function getMenu()
 	{
