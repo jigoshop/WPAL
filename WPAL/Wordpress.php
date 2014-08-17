@@ -142,6 +142,11 @@ class Wordpress
 		return get_post_field($field, $post, $context);
 	}
 
+	public function getPostTypeArchiveLink($post_type)
+	{
+		return get_post_type_archive_link($post_type);
+	}
+
 	public function addRole($role, $display_name, $capabilities = array())
 	{
 		return add_role($role, $display_name, $capabilities);
