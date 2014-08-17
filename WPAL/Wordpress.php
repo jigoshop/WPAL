@@ -361,4 +361,16 @@ class Wordpress
 	{
 		return sanitize_title($title, $fallback_title, $context);
 	}
+
+	public function wpSafeRedirect($location, $status = 302)
+	{
+		wp_safe_redirect($location, $status);
+		exit;
+	}
+
+	public function wpRedirect($location, $status = 302)
+	{
+		wp_redirect($location, $status);
+		exit;
+	}
 }
