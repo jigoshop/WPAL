@@ -26,6 +26,8 @@ class Wordpress
 	private $pageNow;
 	/** @var \WP_Query */
 	private $query;
+	/** @var \WP_Theme */
+	private $theme;
 
 	public function __construct()
 	{
@@ -44,6 +46,7 @@ class Wordpress
 		$this->post = &$post;
 		$this->pageNow = &$pagenow;
 		$this->query = &$wp_query;
+		$this->theme = wp_get_theme();
 	}
 
 	/** @return \wpdb WPDB instance. */
@@ -56,6 +59,12 @@ class Wordpress
 	public function getWpQuery()
 	{
 		return $this->query;
+	}
+
+	/** @return \WP_Theme Currently used theme. */
+	public function wpGetTheme()
+	{
+		return $this->theme;
 	}
 
 	/** @return array Menu data. */
