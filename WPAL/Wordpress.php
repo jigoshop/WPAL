@@ -378,4 +378,9 @@ class Wordpress
 		wp_redirect($location, $status);
 		exit;
 	}
+
+	public function wpautop($pee, $br = true)
+	{
+		return wpautop($pee, $br);
+	}
 }
