@@ -383,4 +383,19 @@ class Wordpress
 	{
 		return wpautop($pee, $br);
 	}
+
+	public function wpGetAttachmentUrl($post_id = 0)
+	{
+		return wp_get_attachment_url($post_id);
+	}
+
+	public function wpGetAttachmentImage($attachment_id, $size = 'thumbnail', $icon = false, $attr = '')
+	{
+		return wp_get_attachment_image($attachment_id, $size, $icon, $attr);
+	}
+
+	public function wpGetAttachmentImageSrc($attachment_id, $size = 'thumbnail', $icon = false)
+	{
+		return wp_get_attachment_image_src($attachment_id, $size, $icon);
+	}
 }
