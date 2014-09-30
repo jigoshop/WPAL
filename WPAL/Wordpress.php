@@ -408,4 +408,14 @@ class Wordpress
 	{
 		return wp_get_attachment_image_src($attachment_id, $size, $icon);
 	}
+
+	public function getPostThumbnailId($post_id = null)
+	{
+		return get_post_thumbnail_id($post_id);
+	}
+
+	public function hasPostThumbnail($post_id = null)
+	{
+		return has_post_thumbnail($post_id);
+	}
 }
