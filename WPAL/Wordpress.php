@@ -332,6 +332,11 @@ class Wordpress
 		return get_terms($taxonomies, $args);
 	}
 
+	public function getTheTerms($post, $taxonomy)
+	{
+		return get_the_terms($post, $taxonomy);
+	}
+
 	public function getTermLink($term, $taxonomy = '')
 	{
 		return get_term_link($term, $taxonomy);
