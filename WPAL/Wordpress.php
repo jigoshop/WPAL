@@ -418,4 +418,9 @@ class Wordpress
 	{
 		return has_post_thumbnail($post_id);
 	}
+
+	public function getPermalink($id = 0, $leavename = false)
+	{
+		return get_permalink($id, $leavename);
+	}
 }
