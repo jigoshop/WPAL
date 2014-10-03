@@ -222,6 +222,31 @@ class Wordpress
 		return current_user_can($capability);
 	}
 
+	public function getCurrentUserId()
+	{
+		return get_current_user_id();
+	}
+
+	public function wpGetCurrentUser()
+	{
+		return wp_get_current_user();
+	}
+
+	public function getCurrentUserInfo()
+	{
+		return get_currentuserinfo();
+	}
+
+	public function getUserData($user_id)
+	{
+		return get_userdata($user_id);
+	}
+
+	public function getUserBy($field, $value)
+	{
+		return get_user_by($field, $value);
+	}
+
 	public function addMenuPage($page_title, $menu_title, $capability, $menu_slug, $function = '', $icon_url = '', $position = null)
 	{
 		return add_menu_page($page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position);
