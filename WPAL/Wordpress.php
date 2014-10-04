@@ -357,6 +357,11 @@ class Wordpress
 		return get_terms($taxonomies, $args);
 	}
 
+	public function getTermBy($field, $value, $taxonomy, $output = OBJECT, $filter = 'raw')
+	{
+		return get_term_by($field, $value, $taxonomy, $output, $filter);
+	}
+
 	public function getTheTerms($post, $taxonomy)
 	{
 		return get_the_terms($post, $taxonomy);
