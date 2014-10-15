@@ -267,6 +267,11 @@ class Wordpress
 		return update_user_meta($user_id, $meta_key, $meta_value, $prev_value);
 	}
 
+	public function getUsers($args = array())
+	{
+		return get_users($args);
+	}
+
 	public function addMenuPage($page_title, $menu_title, $capability, $menu_slug, $function = '', $icon_url = '', $position = null)
 	{
 		return add_menu_page($page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position);
