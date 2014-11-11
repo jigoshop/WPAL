@@ -478,4 +478,25 @@ class Wordpress
 	{
 		return get_permalink($id, $leavename);
 	}
+
+	/**
+	 * @return string URL for Ajax calls.
+	 */
+	public function getAjaxUrl()
+	{
+		return admin_url('admin-ajax.php');
+	}
+
+	/**
+	 * Redirects to selected page.
+	 * Exits after redirect as well.
+	 *
+	 * @param $pageId int Page ID.
+	 * @param $status int Status of redirection.
+	 */
+	public function redirectTo($pageId, $status = 302)
+	{
+		$this->wpRedirect($this->getPermalink($pageId), $status);
+		exit;
+	}
 }
