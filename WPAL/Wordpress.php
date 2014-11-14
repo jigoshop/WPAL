@@ -514,6 +514,31 @@ class Wordpress
 		return get_permalink($id, $leavename);
 	}
 
+	public function addRewriteRule($regex, $redirect, $after = 'bottom')
+	{
+		add_rewrite_rule($regex, $redirect, $after);
+	}
+
+	public function addRewriteEndpoint($name, $places, $query_var = null)
+	{
+		add_rewrite_endpoint($name, $places, $query_var);
+	}
+
+	public function addRewriteTag($tag, $regex, $query = '')
+	{
+		add_rewrite_tag($tag, $regex, $query);
+	}
+
+	public function addPermastruct($name, $struct, $args = array())
+	{
+		return add_permastruct($name, $struct, $args);
+	}
+
+	public function flushRewriteRules($hard = true)
+	{
+		flush_rewrite_rules($hard = true);
+	}
+
 	/**
 	 * @return string URL for Ajax calls.
 	 */
