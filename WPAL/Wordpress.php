@@ -397,9 +397,14 @@ class Wordpress
 		return get_term_link($term, $taxonomy);
 	}
 
-	public function wpUpdatePost($array = array(), $error = false)
+	public function wpInsertPost($data, $wp_error = false)
 	{
-		return wp_update_post($array, $error);
+		return wp_insert_post($data, $wp_error);
+	}
+
+	public function wpUpdatePost($data = array(), $error = false)
+	{
+		return wp_update_post($data, $error);
 	}
 
 	public function updatePostMeta($id, $meta_key, $meta_value, $previous_value = '')
