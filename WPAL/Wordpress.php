@@ -407,6 +407,36 @@ class Wordpress
 		return wp_update_post($data, $error);
 	}
 
+	public function wpPublishPost($post)
+	{
+		wp_publish_post($post);
+	}
+
+	public function wpUniquePostSlug($slug, $post_ID, $post_status, $post_type, $post_parent )
+	{
+		return wp_unique_post_slug($slug, $post_ID, $post_status, $post_type, $post_parent);
+	}
+
+	public function wpAddPostTags($post_id = 0, $tags = '')
+	{
+		return wp_add_post_tags($post_id, $tags);
+	}
+
+	public function wpSetPostTags($post_id = 0, $tags = '', $append = false)
+	{
+		return wp_set_post_tags($post_id, $tags, $append);
+	}
+
+	public function wpSetPostCategories($post_id = 0, $post_categories = array(), $append = false)
+	{
+		return wp_set_post_categories($post_id, $post_categories, $append);
+	}
+
+	public function wpTransitionPostStatus($new_status, $old_status, $post)
+	{
+		wp_transition_post_status($new_status, $old_status, $post);
+	}
+
 	public function updatePostMeta($id, $meta_key, $meta_value, $previous_value = '')
 	{
 		return update_post_meta($id, $meta_key, $meta_value, $previous_value);
