@@ -536,7 +536,27 @@ class Wordpress
 
 	public function flushRewriteRules($hard = true)
 	{
-		flush_rewrite_rules($hard = true);
+		flush_rewrite_rules($hard);
+	}
+
+	public function getSiteOption($option, $default = false, $use_cache = true)
+	{
+		return get_site_option($option, $default, $use_cache);
+	}
+
+	public function addSiteOption($option, $value)
+	{
+		return add_site_option($option, $value);
+	}
+
+	public function updateSiteOption($option, $value)
+	{
+		return update_site_option($option, $value);
+	}
+
+	public function deleteSiteOption($option)
+	{
+		return delete_site_option($option);
 	}
 
 	/**
