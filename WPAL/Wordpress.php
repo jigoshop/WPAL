@@ -559,6 +559,11 @@ class Wordpress
 		return delete_site_option($option);
 	}
 
+	public function addQueryArg()
+	{
+		return call_user_func_array('add_query_arg', func_get_args());
+	}
+
 	/**
 	 * @return string URL for Ajax calls.
 	 */
