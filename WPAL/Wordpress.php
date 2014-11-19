@@ -174,7 +174,7 @@ class Wordpress
 
 	public function doAction($tag, $arg = '')
 	{
-		return do_action($tag, $arg);
+		return call_user_func_array('do_action', func_get_args());
 	}
 
 	public function addFilter($tag, $function_to_add, $priority = 10, $accepted_args = 1)
