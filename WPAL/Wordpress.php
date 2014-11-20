@@ -204,7 +204,7 @@ class Wordpress
 
 	public function applyFilters($tag, $args)
 	{
-		return apply_filters($tag, $args);
+		return call_user_func_array('apply_filters', func_get_args());
 	}
 
 	public function addImageSize($size, $width = 0, $height = 0, $crop = false)
