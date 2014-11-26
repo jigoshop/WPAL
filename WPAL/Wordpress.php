@@ -584,4 +584,8 @@ class Wordpress
 		$this->wpRedirect($this->getPermalink($pageId), $status);
 		exit;
 	}
+
+	public function __debugInfo() {
+		return 'WordPress Abstraction Layer';
+	}
 }
