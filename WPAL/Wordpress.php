@@ -562,9 +562,29 @@ class Wordpress
 		exit;
 	}
 
-	public function addQueryArg()
+	public function wpInsertComment($commentdata)
 	{
-		return call_user_func_array('add_query_arg', func_get_args());
+		return wp_insert_comment($commentdata);
+	}
+
+	public function wpUpdateComment($commentarr)
+	{
+		return wp_update_comment($commentarr);
+	}
+
+	public function getCommentMeta($comment_id, $key = '', $single = false)
+	{
+		return get_comment_meta($comment_id, $key, $single);
+	}
+
+	public function addCommentMeta($comment_id, $meta_key, $meta_value, $unique = false)
+	{
+		return add_comment_meta($comment_id, $meta_key, $meta_value, $unique);
+	}
+
+	public function deleteCommentMeta($comment_id, $meta_key, $meta_value = '')
+	{
+		return delete_comment_meta($comment_id, $meta_key, $meta_value);
 	}
 
 	/**
