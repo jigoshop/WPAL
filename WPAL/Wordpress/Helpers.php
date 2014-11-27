@@ -44,6 +44,11 @@ class Helpers
 		return wptexturize($text);
 	}
 
+	public function wpautop($pee, $br = true)
+	{
+		return wpautop($pee, $br);
+	}
+
 	public function wpParseArgs($args, $defaults = '')
 	{
 		return wp_parse_args($args, $defaults);
@@ -54,9 +59,9 @@ class Helpers
 		return sanitize_title($title, $fallback_title, $context);
 	}
 
-	public function wpautop($pee, $br = true)
+	public function escSql($data)
 	{
-		return wpautop($pee, $br);
+		return esc_sql($data);
 	}
 
 	/**
