@@ -530,6 +530,26 @@ class Wordpress
 		return delete_site_option($option);
 	}
 
+	public function wpRemoteGet($url, $args = array())
+	{
+		return wp_remote_get($url, $args);
+	}
+
+	public function wpRemotePost($url, $args = array())
+	{
+		return wp_remote_post($url, $args);
+	}
+
+	public function wpSafeRemoteGet($url, $args = array())
+	{
+		return wp_safe_remote_get($url, $args);
+	}
+
+	public function wpSafeRemotePost($url, $args = array())
+	{
+		return wp_safe_remote_post($url, $args);
+	}
+
 	public function wpSafeRedirect($location, $status = 302)
 	{
 		wp_safe_redirect($location, $status);
