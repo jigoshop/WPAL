@@ -24,6 +24,11 @@ class Helpers
 		return call_user_func_array('add_query_arg', func_get_args());
 	}
 
+	public function currentTime($type, $gmt = 0)
+	{
+		return current_time($type, $gmt);
+	}
+
 	public function mysql2date($format, $date, $translate = true)
 	{
 		return mysql2date($format, $date, $translate);
