@@ -365,6 +365,11 @@ class Wordpress
 		return wp_count_posts($type, $perm);
 	}
 
+	public function wpCountTerms($taxonomy, $args = array())
+	{
+		return wp_count_terms($taxonomy, $args);
+	}
+
 	public function fetchFeed($url)
 	{
 		return fetch_feed($url);
