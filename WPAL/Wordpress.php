@@ -30,6 +30,8 @@ class Wordpress
 	private $query;
 	/** @var \WP_Theme */
 	private $theme;
+	/** @var Wordpress\Helpers */
+	private $helpers;
 
 	public function __construct()
 	{
@@ -51,6 +53,12 @@ class Wordpress
 		$this->pageNow = &$pagenow;
 		$this->query = &$wp_query;
 		$this->theme = wp_get_theme();
+		$this->helpers = new Wordpress\Helpers();
+	}
+
+	public function getHelpers()
+	{
+		return $this->helpers;
 	}
 
 	/** @return \wpdb WPDB instance. */
@@ -145,6 +153,11 @@ class Wordpress
 	public function getPostMeta($post_id, $key = '', $single = false)
 	{
 		return get_post_meta($post_id, $key, $single);
+	}
+
+	public function updatePostMeta($id, $meta_key, $meta_value, $previous_value = '')
+	{
+		return update_post_meta($id, $meta_key, $meta_value, $previous_value);
 	}
 
 	public function getPostField($field, $post, $context = 'display')
@@ -352,11 +365,6 @@ class Wordpress
 		return wp_count_posts($type, $perm);
 	}
 
-	public function numberFormatI18n($number, $decimals = 0)
-	{
-		return number_format_i18n($number, $decimals);
-	}
-
 	public function fetchFeed($url)
 	{
 		return fetch_feed($url);
@@ -365,11 +373,6 @@ class Wordpress
 	public function isWpError($thing)
 	{
 		return is_wp_error($thing);
-	}
-
-	public function wptexturize($text)
-	{
-		return wptexturize($text);
 	}
 
 	public function humanTimeDiff($from, $to = '')
@@ -437,11 +440,6 @@ class Wordpress
 		wp_transition_post_status($new_status, $old_status, $post);
 	}
 
-	public function updatePostMeta($id, $meta_key, $meta_value, $previous_value = '')
-	{
-		return update_post_meta($id, $meta_key, $meta_value, $previous_value);
-	}
-
 	public function registerSetting($option_group, $option_name, $sanitize_callback = '')
 	{
 		return register_setting($option_group, $option_name, $sanitize_callback);
@@ -455,33 +453,6 @@ class Wordpress
 	public function addSettingsField($id, $title, $callback, $page, $section = 'default', $args = array())
 	{
 		 add_settings_field($id, $title, $callback, $page, $section, $args);
-	}
-
-	public function wpParseArgs($args, $defaults = '')
-	{
-		return wp_parse_args($args, $defaults);
-	}
-
-	public function sanitizeTitle($title, $fallback_title = '', $context = 'save')
-	{
-		return sanitize_title($title, $fallback_title, $context);
-	}
-
-	public function wpSafeRedirect($location, $status = 302)
-	{
-		wp_safe_redirect($location, $status);
-		exit;
-	}
-
-	public function wpRedirect($location, $status = 302)
-	{
-		wp_redirect($location, $status);
-		exit;
-	}
-
-	public function wpautop($pee, $br = true)
-	{
-		return wpautop($pee, $br);
 	}
 
 	public function wpGetAttachmentUrl($post_id = 0)
@@ -557,6 +528,18 @@ class Wordpress
 	public function deleteSiteOption($option)
 	{
 		return delete_site_option($option);
+	}
+
+	public function wpSafeRedirect($location, $status = 302)
+	{
+		wp_safe_redirect($location, $status);
+		exit;
+	}
+
+	public function wpRedirect($location, $status = 302)
+	{
+		wp_redirect($location, $status);
+		exit;
 	}
 
 	public function addQueryArg()
