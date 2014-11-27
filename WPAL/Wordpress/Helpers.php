@@ -19,6 +19,11 @@ class Helpers
 		return stripslashes_deep($value);
 	}
 
+	public function addQueryArg()
+	{
+		return call_user_func_array('add_query_arg', func_get_args());
+	}
+
 	public function mysql2date($format, $date, $translate = true)
 	{
 		return mysql2date($format, $date, $translate);
