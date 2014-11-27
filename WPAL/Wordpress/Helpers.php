@@ -19,6 +19,11 @@ class Helpers
 		return stripslashes_deep($value);
 	}
 
+	public function mysql2date($format, $date, $translate = true)
+	{
+		return mysql2date($format, $date, $translate);
+	}
+
 	public function numberFormatI18n($number, $decimals = 0)
 	{
 		return number_format_i18n($number, $decimals);
