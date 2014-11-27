@@ -33,4 +33,17 @@ class Helpers
 	{
 		return wpautop($pee, $br);
 	}
+
+	/**
+	 * Parses post body with HTML parser.
+	 *
+	 * Calls `wptexturize` and `wpautop` functions.
+	 *
+	 * @param $text string Text to parse.
+	 * @return string HTML result.
+	 */
+	public function parsePostBody($text)
+	{
+		return $this->wpautop($this->wptexturize($text));
+	}
 }
