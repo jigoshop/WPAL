@@ -4,6 +4,16 @@ namespace WPAL\Wordpress;
 
 class Helpers
 {
+	public function createNonce($action = -1)
+	{
+		return wp_create_nonce($action);
+	}
+
+	public function verifyNonce($nonce, $action = -1)
+	{
+		return wp_verify_nonce($nonce, $action);
+	}
+
 	public function stripSlashesDeep($value)
 	{
 		return stripslashes_deep($value);
