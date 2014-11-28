@@ -10,6 +10,7 @@ namespace WPAL;
  */
 class Wordpress
 {
+	private $wp;
 	/** @var \wpdb */
 	private $wpdb;
 	/** @var array */
@@ -35,6 +36,7 @@ class Wordpress
 
 	public function __construct()
 	{
+		global $wp;
 		global $wpdb;
 		global $wp_query;
 		global $menu;
@@ -44,6 +46,7 @@ class Wordpress
 		global $pagenow;
 		global $post_type;
 
+		$this->wp = &$wp;
 		$this->wpdb = &$wpdb;
 		$this->menu = &$menu;
 		$this->submenu = &$submenu;
@@ -59,6 +62,12 @@ class Wordpress
 	public function getHelpers()
 	{
 		return $this->helpers;
+	}
+
+	/** @return stdClass */
+	public function getWp()
+	{
+		return $this->wp;
 	}
 
 	/** @return \wpdb WPDB instance. */
