@@ -259,9 +259,19 @@ class Wordpress
 		return get_current_user_id();
 	}
 
+	public function isUserLoggedIn()
+	{
+		return is_user_logged_in();
+	}
+
 	public function wpGetCurrentUser()
 	{
 		return wp_get_current_user();
+	}
+
+	public function wpUpdateUser($userdata)
+	{
+		return wp_update_user($userdata);
 	}
 
 	public function getCurrentUserInfo()
@@ -287,6 +297,11 @@ class Wordpress
 	public function updateUserMeta($user_id, $meta_key, $meta_value, $prev_value = '')
 	{
 		return update_user_meta($user_id, $meta_key, $meta_value, $prev_value);
+	}
+
+	public function wpCheckPassword($password, $hash, $user_id = '')
+	{
+		return wp_check_password($password, $hash, $user_id);
 	}
 
 	public function getUsers($args = array())
