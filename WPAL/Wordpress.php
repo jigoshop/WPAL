@@ -174,6 +174,16 @@ class Wordpress
 		return get_post_field($field, $post, $context);
 	}
 
+	public function getPages($args = array())
+	{
+		return get_pages($args);
+	}
+
+	public function getPageUri($page)
+	{
+		return get_page_uri($page);
+	}
+
 	public function getPostTypeArchiveLink($post_type)
 	{
 		return get_post_type_archive_link($post_type);
