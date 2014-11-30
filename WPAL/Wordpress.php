@@ -29,6 +29,8 @@ class Wordpress
 	private $pageNow;
 	/** @var \WP_Query */
 	private $query;
+	/** @var \WP_Rewrite */
+	private $rewrite;
 	/** @var \WP_Theme */
 	private $theme;
 	/** @var Wordpress\Helpers */
@@ -39,6 +41,7 @@ class Wordpress
 		global $wp;
 		global $wpdb;
 		global $wp_query;
+		global $wp_rewrite;
 		global $menu;
 		global $submenu;
 		global $current_screen;
@@ -55,6 +58,7 @@ class Wordpress
 		$this->post_type = &$post_type;
 		$this->pageNow = &$pagenow;
 		$this->query = &$wp_query;
+		$this->rewrite = &$wp_rewrite;
 		$this->theme = wp_get_theme();
 		$this->helpers = new Wordpress\Helpers();
 	}
@@ -77,9 +81,17 @@ class Wordpress
 	}
 
 	/** @return \WP_Query Current query object. */
-	public function getWpQuery()
+	public function getQuery()
 	{
 		return $this->query;
+	}
+
+	/**
+	 * @return \WP_Rewrite
+	 */
+	public function getRewrite()
+	{
+		return $this->rewrite;
 	}
 
 	/** @return \WP_Theme Currently used theme. */
