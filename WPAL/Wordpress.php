@@ -68,7 +68,7 @@ class Wordpress
 		return $this->helpers;
 	}
 
-	/** @return stdClass */
+	/** @return \stdClass */
 	public function getWp()
 	{
 		return $this->wp;
@@ -269,6 +269,11 @@ class Wordpress
 	public function isAdmin()
 	{
 		return is_admin();
+	}
+
+	public function isSsl()
+	{
+		return is_ssl();
 	}
 
 	public function currentUserCan($capability)
