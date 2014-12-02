@@ -296,6 +296,11 @@ class Wordpress
 		return wp_get_current_user();
 	}
 
+	public function wpCreateUser($username, $password, $email = '')
+	{
+		return wp_create_user($username, $password, $email);
+	}
+
 	public function wpUpdateUser($userdata)
 	{
 		return wp_update_user($userdata);
@@ -646,6 +651,11 @@ class Wordpress
 	public function deleteCommentMeta($comment_id, $meta_key, $meta_value = '')
 	{
 		return delete_comment_meta($comment_id, $meta_key, $meta_value);
+	}
+
+	public function wpSetAuthCookie($user_id, $remember = false, $secure = '')
+	{
+		return wp_set_auth_cookie($user_id, $remember, $secure);
 	}
 
 	/**
