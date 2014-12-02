@@ -536,6 +536,11 @@ class Wordpress
 		return get_permalink($id, $leavename);
 	}
 
+	public function getPageLink($post = false, $leavename = false, $sample = false)
+	{
+		return get_page_link($post, $leavename, $sample);
+	}
+
 	public function addRewriteRule($regex, $redirect, $after = 'bottom')
 	{
 		add_rewrite_rule($regex, $redirect, $after);
