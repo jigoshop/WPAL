@@ -653,6 +653,11 @@ class Wordpress
 		return delete_comment_meta($comment_id, $meta_key, $meta_value);
 	}
 
+	public function wpMail($to, $subject, $message, $headers = '', $attachments = array())
+	{
+		return wp_mail($to, $subject, $message, $headers, $attachments);
+	}
+
 	public function wpSetAuthCookie($user_id, $remember = false, $secure = '')
 	{
 		return wp_set_auth_cookie($user_id, $remember, $secure);
