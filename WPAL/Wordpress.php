@@ -176,6 +176,11 @@ class Wordpress
 		return get_post_meta($post_id, $key, $single);
 	}
 
+	public function getPosts($args = null)
+	{
+		return get_posts($args);
+	}
+
 	public function updatePostMeta($id, $meta_key, $meta_value, $previous_value = '')
 	{
 		return update_post_meta($id, $meta_key, $meta_value, $previous_value);
@@ -184,6 +189,11 @@ class Wordpress
 	public function getPostField($field, $post, $context = 'display')
 	{
 		return get_post_field($field, $post, $context);
+	}
+
+	public function getCategories($args = '')
+	{
+		return get_categories($args);
 	}
 
 	public function getPages($args = array())
@@ -444,6 +454,11 @@ class Wordpress
 	public function humanTimeDiff($from, $to = '')
 	{
 		return human_time_diff($from, $to);
+	}
+
+	public function getTerm($term, $taxonomy, $output = OBJECT, $filter = 'raw')
+	{
+		return get_term($term, $taxonomy, $output, $filter);
 	}
 
 	public function getTerms($taxonomies, $args = '')
