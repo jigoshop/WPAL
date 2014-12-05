@@ -366,6 +366,11 @@ class Wordpress
 		return register_post_type($post_type, $args);
 	}
 
+	public function registerPostStatus($post_status, $args = array())
+	{
+		return register_post_status($post_status, $args);
+	}
+
 	public function registerTaxonomy($taxonomy, $object_type, $args = array())
 	{
 		return register_taxonomy($taxonomy, $object_type, $args);
