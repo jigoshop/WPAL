@@ -49,6 +49,11 @@ class Helpers
 		return number_format_i18n($number, $decimals);
 	}
 
+	public function dateI18n($dateformatstring, $unixtimestamp = false, $gmt = false)
+	{
+		return date_i18n($dateformatstring, $unixtimestamp, $gmt);
+	}
+
 	public function wptexturize($text)
 	{
 		return wptexturize($text);
