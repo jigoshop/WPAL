@@ -668,6 +668,11 @@ class Wordpress
 		return wp_set_auth_cookie($user_id, $remember, $secure);
 	}
 
+	public function wpNewUserNotification($user_id, $plaintext_pass = '')
+	{
+		return wp_new_user_notification($user_id, $plaintext_pass);
+	}
+
 	/**
 	 * @return string URL for Ajax calls.
 	 */
