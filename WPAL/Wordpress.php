@@ -286,6 +286,26 @@ class Wordpress
 		return is_ssl();
 	}
 
+	public function isMultisite()
+	{
+		return is_multisite();
+	}
+
+	public function siteUrl($path = '', $scheme = null)
+	{
+		return site_url($path, $scheme);
+	}
+
+	public function networkAdminUrl($path = '', $scheme = null)
+	{
+		return network_admin_url($path, $scheme);
+	}
+
+	public function wpUploadDir($time = null)
+	{
+		return wp_upload_dir($time);
+	}
+
 	public function currentUserCan($capability)
 	{
 		return current_user_can($capability);
