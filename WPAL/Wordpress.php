@@ -118,6 +118,15 @@ class Wordpress
 		return $this->post;
 	}
 
+	/**
+	 * @param $newPost \WP_Post Post to update global one.
+	 */
+	public function updateGlobalPost($newPost)
+	{
+		global $post;
+		$post = $newPost;
+	}
+
 	/** @return string Post type value. */
 	public function getPostType()
 	{
@@ -700,12 +709,12 @@ class Wordpress
 
 	public function wpSetAuthCookie($user_id, $remember = false, $secure = '')
 	{
-		return wp_set_auth_cookie($user_id, $remember, $secure);
+		wp_set_auth_cookie($user_id, $remember, $secure);
 	}
 
 	public function wpNewUserNotification($user_id, $plaintext_pass = '')
 	{
-		return wp_new_user_notification($user_id, $plaintext_pass);
+		wp_new_user_notification($user_id, $plaintext_pass);
 	}
 
 	/**
