@@ -450,6 +450,11 @@ class Wordpress
 		wp_enqueue_style($handle, $src, $deps, $ver, $media);
 	}
 
+	public function wpDeregisterStyle($handle)
+	{
+		wp_deregister_style($handle);
+	}
+
 	public function addMetaBox($id, $title, $callback, $screen = null, $context = 'advanced', $priority = 'default', $callback_args = null)
 	{
 		add_meta_box($id, $title, $callback, $screen, $context, $priority, $callback_args);
