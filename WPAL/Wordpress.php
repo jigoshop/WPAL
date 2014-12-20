@@ -285,6 +285,11 @@ class Wordpress
 		return get_option($option, $default);
 	}
 
+	public function deleteOption($option)
+	{
+		return delete_option($option);
+	}
+
 	public function isAdmin()
 	{
 		return is_admin();
