@@ -310,6 +310,11 @@ class Wordpress
 		return site_url($path, $scheme);
 	}
 
+	public function adminUrl($path = '', $scheme = 'admin')
+	{
+		return admin_url($path, $scheme);
+	}
+
 	public function networkAdminUrl($path = '', $scheme = null)
 	{
 		return network_admin_url($path, $scheme);
