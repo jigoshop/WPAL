@@ -732,6 +732,21 @@ class Wordpress
 		wp_new_user_notification($user_id, $plaintext_pass);
 	}
 
+	public function getTransient($transient)
+	{
+		return get_transient($transient);
+	}
+
+	public function setTransient($transient, $value, $expiration = 0)
+	{
+		return set_transient($transient, $value, $expiration);
+	}
+
+	public function deleteTransient($transient)
+	{
+		return delete_transient($transient);
+	}
+
 	/**
 	 * @return string URL for Ajax calls.
 	 */
