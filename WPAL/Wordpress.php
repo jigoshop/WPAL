@@ -747,6 +747,11 @@ class Wordpress
 		return delete_transient($transient);
 	}
 
+	public function getHomeUrl($blog_id = null, $path = '', $scheme = null)
+	{
+		return get_home_url($blog_id, $path, $scheme);
+	}
+
 	/**
 	 * @return string URL for Ajax calls.
 	 */
