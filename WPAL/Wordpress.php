@@ -425,6 +425,16 @@ class Wordpress
 		return register_taxonomy($taxonomy, $object_type, $args);
 	}
 
+	public function registerWidget($widget_class)
+	{
+		register_widget($widget_class);
+	}
+
+	public function unregisterWidget($widget_class)
+	{
+		unregister_widget($widget_class);
+	}
+
 	public function isPostTypeArchive($post_types = '')
 	{
 		return is_post_type_archive($post_types);
