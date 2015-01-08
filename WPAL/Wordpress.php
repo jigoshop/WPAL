@@ -139,6 +139,11 @@ class Wordpress
 		return $this->pageNow;
 	}
 
+	public function getBlogInfo($show = '', $filter = 'raw')
+	{
+		return get_bloginfo($show, $filter);
+	}
+
 	public function getQueryParameter($parameter, $default = null)
 	{
 		if(!isset($this->query->query[$parameter])){
