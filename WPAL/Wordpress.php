@@ -620,6 +620,11 @@ class Wordpress
 		return has_post_thumbnail($post_id);
 	}
 
+	public function setPostThumbnail($post, $thumbnail_id)
+	{
+		return set_post_thumbnail($post, $thumbnail_id);
+	}
+
 	public function getPermalink($id = 0, $leavename = false)
 	{
 		return get_permalink($id, $leavename);
