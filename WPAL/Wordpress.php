@@ -732,6 +732,31 @@ class Wordpress
 		return delete_comment_meta($comment_id, $meta_key, $meta_value);
 	}
 
+	public function haveComments()
+	{
+		return have_comments();
+	}
+
+	public function commentsOpen($post_id = null)
+	{
+		return comments_open($post_id);
+	}
+
+	public function getCommentsNumber($post_id = null)
+	{
+		return get_comments_number($post_id);
+	}
+
+	public function commentsNumber($zero = false, $one = false, $more = false, $deprecated = '')
+	{
+		return comments_number($zero, $one, $more, $deprecated);
+	}
+
+	public function getCommentsNumberText($zero = false, $one = false, $more = false)
+	{
+		return get_comments_number_text($zero, $one, $more);
+	}
+
 	public function wpMail($to, $subject, $message, $headers = '', $attachments = array())
 	{
 		return wp_mail($to, $subject, $message, $headers, $attachments);
