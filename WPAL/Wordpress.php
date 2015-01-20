@@ -480,6 +480,11 @@ class Wordpress
 		wp_deregister_style($handle);
 	}
 
+	public function wpEnqueueMedia($args = array())
+	{
+		wp_enqueue_media($args);
+	}
+
 	public function addMetaBox($id, $title, $callback, $screen = null, $context = 'advanced', $priority = 'default', $callback_args = null)
 	{
 		add_meta_box($id, $title, $callback, $screen, $context, $priority, $callback_args);
