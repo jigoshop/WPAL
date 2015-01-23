@@ -14,6 +14,11 @@ class Helpers
 		return untrailingslashit($string);
 	}
 
+	public function maybeUnserialize($original)
+	{
+		return maybe_unserialize($original);
+	}
+
 	public function createNonce($action = -1)
 	{
 		return wp_create_nonce($action);
